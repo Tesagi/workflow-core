@@ -1,7 +1,7 @@
 ﻿using System;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
-using WorkflowCore.Primitives;
+using WorkflowCore.Primitives.EDM;
 
 namespace WorkflowCore.JobSample.Steps
 {

@@ -6,7 +6,7 @@ using WorkflowCore.Primitives;
 
 namespace WorkflowCore.Interface
 {
-    public interface IStepBuilder<TData, TStepBody> : IWorkflowModifier<TData, TStepBody>
+    public interface IStepBuilder<TData, TStepBody> : IWorkflowModifier<TData, TStepBody>, IEdmModifier<TData, TStepBody>
         where TStepBody : IStepBody
     {
         IWorkflowBuilder<TData> WorkflowBuilder { get; }
@@ -150,8 +150,5 @@ namespace WorkflowCore.Interface
         /// <param name="cancelCondition"></param>
         /// <returns></returns>
         IStepBuilder<TData, TStepBody> CancelCondition(Expression<Func<TData, bool>> cancelCondition, bool proceedAfterCancel = false);
-
-        IStepBuilder<TData, Foreach> Job<TStep>(Expression<Func<TData, IEnumerable>> collection,
-            Expression<Func<TData, bool>> runParallel) where TStep : Job;
     }
 }

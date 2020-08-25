@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
+using WorkflowCore.Primitives.EDM;
 
 namespace WorkflowCore.Services
 {
@@ -504,6 +505,12 @@ namespace WorkflowCore.Services
         }
 
         public IStepBuilder<TData, Foreach> Job<TStep>(Expression<Func<TData, IEnumerable>> collection, Expression<Func<TData, bool>> runParallel) where TStep : Job
+        {
+            return this.ForEach(collection, runParallel)
+                .Do(then => then.StartWith<TStep>().Input(step => step.Performer, (data, context) => context.Item));
+        }
+
+        public IStepBuilder<TData, Foreach> Notification<TStep>(Expression<Func<TData, IEnumerable>> collection, Expression<Func<TData, bool>> runParallel) where TStep : Notification
         {
             return this.ForEach(collection, runParallel)
                 .Do(then => then.StartWith<TStep>().Input(step => step.Performer, (data, context) => context.Item));

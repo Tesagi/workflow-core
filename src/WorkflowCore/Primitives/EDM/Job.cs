@@ -1,7 +1,7 @@
 ﻿using WorkflowCore.Interface;
 using WorkflowCore.Models;
 
-namespace WorkflowCore.Primitives
+namespace WorkflowCore.Primitives.EDM
 {
     public abstract class Job : StepBody
     {
