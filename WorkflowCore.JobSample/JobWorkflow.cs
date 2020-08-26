@@ -13,7 +13,7 @@ namespace WorkflowCore.JobSample
         {
             builder.StartWith<DebugStep>()
                         .Input(step => step.Message, data => "StartStep")
-                        .Job<DebugJob>(data => data.Performers, data => true)
+                        .Job<DebugJob>(data => data.Performers, data => false)
                         .Then<DebugStep>()
                         .Input(step => step.Message, data => "EndStep");
         }

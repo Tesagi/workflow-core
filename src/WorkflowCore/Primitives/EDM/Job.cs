@@ -1,4 +1,6 @@
-﻿using WorkflowCore.Interface;
+﻿using System;
+using System.Linq.Expressions;
+using WorkflowCore.Interface;
 using WorkflowCore.Models;
 
 namespace WorkflowCore.Primitives.EDM
@@ -7,6 +9,20 @@ namespace WorkflowCore.Primitives.EDM
     {
         public object Performer { get; set; }
 
-        public abstract override ExecutionResult Run(IStepExecutionContext context);
+        public sealed override ExecutionResult Run(IStepExecutionContext context)
+        {
+            if (!context.ExecutionPointer.EventPublished)
+            {
+                BeforeEvent(context);
+                return ExecutionResult.WaitForEvent(context.Workflow.Id, context.ExecutionPointer.Id, DateTime.UtcNow);
+            }
+
+            AfterEvent(context);
+            return ExecutionResult.Next();
+        }
+
+        public abstract void BeforeEvent(IStepExecutionContext context);
+
+        public abstract void AfterEvent(IStepExecutionContext context);
     }
 }
