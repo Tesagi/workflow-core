@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Linq.Expressions;
 using WorkflowCore.Interface;
+using WorkflowCore.Interface.EDM;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
-using WorkflowCore.Primitives.EDM;
 
 namespace WorkflowCore.Services
 {
@@ -504,16 +504,16 @@ namespace WorkflowCore.Services
             return this;
         }
 
-        public IStepBuilder<TData, Foreach> Job<TJob>(Expression<Func<TData, IEnumerable>> collection, Expression<Func<TData, bool>> runParallel) where TJob : Job
+        public IStepBuilder<TData, Foreach> Job<TJob>(Expression<Func<TData, IEnumerable>> collection, Expression<Func<TData, bool>> runParallel) where TJob : StepBody, IEdmJob
         {
             return this.ForEach(collection, runParallel)
-                .Do(then => then.StartWith<TJob>().Input(step => step.Performer, (data, context) => context.Item));
+                .Do(then => then.StartWith<TJob>().Input(step => step.PerformerId, (data, context) => context.Item));
         }
 
-        public IStepBuilder<TData, Foreach> Notification<TStep>(Expression<Func<TData, IEnumerable>> collection) where TStep : Notification
+        public IStepBuilder<TData, Foreach> Notification<TStep>(Expression<Func<TData, IEnumerable>> collection) where TStep : StepBody, IEdmNotification
         {
             return this.ForEach(collection)
-                .Do(then => then.StartWith<TStep>().Input(step => step.Performer, (data, context) => context.Item));
+                .Do(then => then.StartWith<TStep>().Input(step => step.PerformerId, (data, context) => context.Item));
         }
 
         public IStepBuilder<TData, Activity> Activity(string activityName, Expression<Func<TData, object>> parameters = null, Expression<Func<TData, DateTime>> effectiveDate = null, Expression<Func<TData, bool>> cancelCondition = null)

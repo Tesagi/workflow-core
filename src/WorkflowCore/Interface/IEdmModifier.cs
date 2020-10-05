@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Linq.Expressions;
+using WorkflowCore.Interface.EDM;
+using WorkflowCore.Models;
 using WorkflowCore.Primitives;
-using WorkflowCore.Primitives.EDM;
 
 namespace WorkflowCore.Interface
 {
@@ -10,8 +11,8 @@ namespace WorkflowCore.Interface
         where TStepBody : IStepBody
     {
         IStepBuilder<TData, Foreach> Job<TJob>(Expression<Func<TData, IEnumerable>> collection,
-            Expression<Func<TData, bool>> runParallel) where TJob : Job;
+            Expression<Func<TData, bool>> runParallel) where TJob : StepBody, IEdmJob;
 
-        IStepBuilder<TData, Foreach> Notification<TNotification>(Expression<Func<TData, IEnumerable>> collection) where TNotification : Notification;
+        IStepBuilder<TData, Foreach> Notification<TNotification>(Expression<Func<TData, IEnumerable>> collection) where TNotification : StepBody, IEdmNotification;
     }
 }
