@@ -109,12 +109,10 @@ namespace WorkflowCore.Services
 
             Branches.Add(branch);
         }
-
     }
 
     public class WorkflowBuilder<TData> : WorkflowBuilder, IWorkflowBuilder<TData>
     {
-
         public override WorkflowDefinition Build(string id, int version)
         {
             var result = base.Build(id, version);
@@ -225,7 +223,7 @@ namespace WorkflowCore.Services
         {
             return Start().ForEach(collection);
         }
-        
+
         public IContainerStepBuilder<TData, Foreach, Foreach> ForEach(Expression<Func<TData, IEnumerable>> collection, Expression<Func<TData, bool>> runParallel)
         {
             return Start().ForEach(collection, runParallel);
@@ -243,7 +241,7 @@ namespace WorkflowCore.Services
 
         public IContainerStepBuilder<TData, When, OutcomeSwitch> When(Expression<Func<TData, object>> outcomeValue, string label = null)
         {
-            return ((IWorkflowModifier<TData, InlineStepBody>) Start()).When(outcomeValue, label);
+            return ((IWorkflowModifier<TData, InlineStepBody>)Start()).When(outcomeValue, label);
         }
 
         public IParallelStepBuilder<TData, Sequence> Parallel()

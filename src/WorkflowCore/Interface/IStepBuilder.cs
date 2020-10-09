@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Linq.Expressions;
+using WorkflowCore.Interface.EDM;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
 
 namespace WorkflowCore.Interface
 {
-    public interface IStepBuilder<TData, TStepBody> : IWorkflowModifier<TData, TStepBody>, IEdmModifier<TData, TStepBody>
+    public interface IStepBuilder<TData, TStepBody> : IWorkflowModifier<TData, TStepBody>, IEdmStepBuilderModifiers<TData, TStepBody>
         where TStepBody : IStepBody
     {
         IWorkflowBuilder<TData> WorkflowBuilder { get; }

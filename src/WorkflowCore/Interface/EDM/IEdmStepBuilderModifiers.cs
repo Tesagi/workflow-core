@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Linq.Expressions;
-using WorkflowCore.Interface.EDM;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
 
-namespace WorkflowCore.Interface
+namespace WorkflowCore.Interface.EDM
 {
-    public interface IEdmModifier<TData, TStepBody>
+    public interface IEdmStepBuilderModifiers<TData, TStepBody>
         where TStepBody : IStepBody
     {
         IStepBuilder<TData, Foreach> Job<TJob>(Expression<Func<TData, IEnumerable>> collection,

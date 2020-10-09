@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WorkflowCore.Interface.EDM;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
 
@@ -9,7 +10,7 @@ namespace WorkflowCore.Interface
     {
         List<WorkflowStep> Steps { get; }
 
-        int LastStep { get; }                
+        int LastStep { get; }
 
         IWorkflowBuilder<T> UseData<T>();
 
@@ -21,7 +22,7 @@ namespace WorkflowCore.Interface
     }
 
     public interface IWorkflowBuilder<TData> : IWorkflowBuilder, IWorkflowModifier<TData, InlineStepBody>
-    {        
+    {
         IStepBuilder<TData, TStep> StartWith<TStep>(Action<IStepBuilder<TData, TStep>> stepSetup = null) where TStep : IStepBody;
 
         IStepBuilder<TData, InlineStepBody> StartWith(Func<IStepExecutionContext, ExecutionResult> body);
@@ -33,6 +34,5 @@ namespace WorkflowCore.Interface
         IWorkflowBuilder<TData> UseDefaultErrorBehavior(WorkflowErrorHandling behavior, TimeSpan? retryInterval = null);
 
         IWorkflowBuilder<TData> CreateBranch();
-                
     }
 }
