@@ -145,8 +145,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowCore.Sample09s", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScratchPad", "test\ScratchPad\ScratchPad.csproj", "{51BB7DCD-01DD-453D-A1E7-17E5E3DBB14C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowCore.JobSample", "src\samples\WorkflowCore.JobSample\WorkflowCore.JobSample.csproj", "{530036A9-7DC0-4832-AF80-2A3A7B52038B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -357,10 +355,6 @@ Global
 		{51BB7DCD-01DD-453D-A1E7-17E5E3DBB14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51BB7DCD-01DD-453D-A1E7-17E5E3DBB14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51BB7DCD-01DD-453D-A1E7-17E5E3DBB14C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{530036A9-7DC0-4832-AF80-2A3A7B52038B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{530036A9-7DC0-4832-AF80-2A3A7B52038B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{530036A9-7DC0-4832-AF80-2A3A7B52038B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{530036A9-7DC0-4832-AF80-2A3A7B52038B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -420,7 +414,6 @@ Global
 		{5BE6D628-B9DB-4C76-AAEB-8F3800509A84} = {5080DB09-CBE8-4C45-9957-C3BB7651755E}
 		{E32CF21A-29CC-46D1-8044-FCC327F2B281} = {5080DB09-CBE8-4C45-9957-C3BB7651755E}
 		{51BB7DCD-01DD-453D-A1E7-17E5E3DBB14C} = {E6CEAD8D-F565-471E-A0DC-676F54EAEDEB}
-		{530036A9-7DC0-4832-AF80-2A3A7B52038B} = {5080DB09-CBE8-4C45-9957-C3BB7651755E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DC0FA8D3-6449-4FDA-BB46-ECF58FAD23B4}

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WorkflowCore.Interface.EDM;
 using WorkflowCore.Models;
 using WorkflowCore.Primitives;
 
